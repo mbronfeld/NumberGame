@@ -1,7 +1,9 @@
 // Arguements to this function are the number of numbers followed by those numbers specifically
 
 #include <iostream>
-#include <bits/stdc++.h>
+#include <vector>
+#include <algorithm>
+#include <string>
 
 using namespace std;
 
