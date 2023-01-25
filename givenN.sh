@@ -9,7 +9,8 @@ rm results*.txt 2>/dev/null
 for (( i=1 ; i<=$size ; i++ ));
 do
     echo $i
-    time (cat results${i}.txt | xargs -L1 -P0 ./part | uniq > results$((i+1)).txt 2> /dev/null)
+    time (cat results${i}.txt | uniq | xargs -L1 -P0 ./part  > results$((i+1)).txt 2> /dev/null)
 done
 
-cat results${size}.txt | sort -n | uniq -c | sort -k 1n
+#cat results${size}.txt | sort -n | uniq -c | sort -k 1n
+cat results${size}.txt | sort -nu
