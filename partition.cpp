@@ -168,5 +168,3 @@ int main(int argc, char **argv) {
     }
     return 0;
 }
-
-//./gen 4 1 2 3 4 | xargs -L1 -P0 ./part | xargs -L1 -P0 ./part | xargs -L1 -P0 ./part

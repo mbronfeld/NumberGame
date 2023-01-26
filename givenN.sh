@@ -14,4 +14,5 @@ done
 
 echo $'\n'
 #cat results${size}.txt | sort -n | uniq -c | sort -k 1n
-cat results${size}.txt | sort -nu
+cat results${size}.txt | sort -nu > results-final.txt
+cat results-final.txt
