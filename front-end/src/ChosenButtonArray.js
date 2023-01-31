@@ -1,9 +1,11 @@
-import React from "react";
+import React,{useState} from "react";
 import NumberButton from "./NumberButton";
 import OpButton from "./OpButton";
+import EqualButton from "./EqualButton";
+import {buttons, biggestID} from "./App";
 
 function ChosenButtonArray({numberButtons, operatorButton, 
-                            onNumberButtonClick, onOperatorButtonClick}) {
+                            onNumberButtonClick, onOperatorButtonClick, evaluate}) {
     
     const leftChosenNumber = numberButtons[0] ? <NumberButton
                                         caption={numberButtons[0].text}
@@ -32,6 +34,8 @@ function ChosenButtonArray({numberButtons, operatorButton,
             <div className="right-chosen-button">
                 {rightChosenNumber}
             </div>
+            {numberButtons[0] && numberButtons[1] && operatorButton[0] ? 
+                <EqualButton onClick={() => evaluate()}/> : null}
         </div>
     );
 }
