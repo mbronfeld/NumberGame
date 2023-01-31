@@ -26,7 +26,7 @@ function App() {
   const [topRightNumberButton, setTopRightNumberButton] = React.useState();
   
   const [bottomOpButtons, setBottomOpButton] = React.useState(operations);
-  const [topOpButton, setTopOpButton] = React.useState([]);
+  const [topOpButton, setTopOpButton] = React.useState();
 
   const handleBottomNumberClick = React.useCallback((buttonID) => {
       if ((topLeftNumberButton) && (topRightNumberButton)) {
@@ -63,19 +63,19 @@ function App() {
   const handleBottomOpClick = React.useCallback((opID) => {
     console.log({opID})
     const op = bottomOpButtons.find((op) => op.id === opID);
-    setTopOpButton([op]);
+    setTopOpButton(op);
   }, [bottomOpButtons, topOpButton]);
 
   const handleTopOpClick = React.useCallback((opID) => {
     console.log(opID)
-    setTopOpButton([])
+    setTopOpButton(null)
   });
 
   return (
     <div className="App">
       <header className="App-header">
          <ChosenButtonArray numberButtons={[topLeftNumberButton, topRightNumberButton]}
-                            operatorButton={topOpButton} 
+                            operatorButton={[topOpButton]} 
                             onNumberButtonClick={handleTopNumberClick}
                             onOperatorButtonClick={handleTopOpClick}/>
          <div className="lower-button-groups">
