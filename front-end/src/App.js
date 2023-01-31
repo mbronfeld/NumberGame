@@ -6,10 +6,10 @@ import ChosenButtonArray from './ChosenButtonArray';
 import { click } from '@testing-library/user-event/dist/click';
 
 let buttons = [
-  {text: 4, id: "1", visible: true},
-  {text: 7, id: "2", visible: true},
+  {text: 1, id: "1", visible: true},
+  {text: 2, id: "2", visible: true},
   {text: 3, id: "3", visible: true},
-  {text: 6, id: "4", visible: true},
+  {text: 4, id: "4", visible: true}
 ];
 
 const operations = [
@@ -19,7 +19,7 @@ const operations = [
   {text: "÷", id: "4"},
 ];
 
-const target = 17;
+const target = 37;
 
 export default function App() {
 
@@ -69,7 +69,7 @@ export default function App() {
     }
 
   const [winReached, setWinReached] = React.useState(false)
-  const [biggestID, setBiggestID] = React.useState(4);
+  const [biggestID, setBiggestID] = React.useState(5);
   const [bottomNumberButtons, setBottomNumberButtons] = React.useState(buttons);
   const [topLeftNumberButton, setTopLeftNumberButton] = React.useState();
   const [topRightNumberButton, setTopRightNumberButton] = React.useState();
@@ -122,6 +122,9 @@ export default function App() {
 
   return (
     <div className="App">
+      <div>
+        {target}
+      </div>
       {!winReached ? <header className="App-header">
          <ChosenButtonArray numberButtons={[topLeftNumberButton, topRightNumberButton]}
                             operatorButton={[topOpButton]} 

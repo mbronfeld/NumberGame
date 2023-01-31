@@ -1,8 +1,7 @@
-import React,{useState} from "react";
+import React from "react";
 import NumberButton from "./NumberButton";
 import OpButton from "./OpButton";
 import EqualButton from "./EqualButton";
-import {buttons, biggestID} from "./App";
 
 function ChosenButtonArray({numberButtons, operatorButton, 
                             onNumberButtonClick, onOperatorButtonClick, evaluate}) {
