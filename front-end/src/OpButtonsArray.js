@@ -1,10 +1,10 @@
 import React from "react";
-import GameButton from "./GameButton";
+import OpButton from "./OpButton";
 
 function OpButtonArray({operations, onButtonClick}) {
     
     const op_buttons = operations.map((value, index) => {
-        return <GameButton
+        return <OpButton
                 caption={value.text}
                 onClick={() => onButtonClick(value.id)}/>
     });

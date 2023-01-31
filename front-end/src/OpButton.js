@@ -1,14 +1,14 @@
 import React from 'react'
 
-function GameButton(props) {
+function OpButton(props) {
 
     return (
         <input 
             type='button' 
             value={props.caption}
             onClick={props.onClick}
-            className={`button-5 ${props.className}`}/>
+            className={`button-36 ${props.className}`}/>
     );
 }
 
-export default GameButton;
+export default OpButton;
