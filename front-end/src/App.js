@@ -3,14 +3,21 @@ import ButtonArray from './ButtonArray';
 import React from 'react';
 import OpButtonArray from './OpButtonsArray';
 import ChosenButtonArray from './ChosenButtonArray';
-import { click } from '@testing-library/user-event/dist/click';
+import UndoButton from './UndoButton';
 
 let buttons = [
-  {text: 1, id: "1", visible: true},
-  {text: 2, id: "2", visible: true},
+  {text: 7, id: "1", visible: true},
+  {text: 7, id: "2", visible: true},
   {text: 3, id: "3", visible: true},
-  {text: 4, id: "4", visible: true}
+  {text: 3, id: "4", visible: true}
 ];
+
+let lastButtons = [
+  {id: "1", visible: true},
+  {id: "2", visible: true},
+  {id: "3", visible: true},
+  {id: "4", visible: true},
+]
 
 const operations = [
   {text: "+", id: "1"},
@@ -19,7 +26,7 @@ const operations = [
   {text: "÷", id: "4"},
 ];
 
-const target = 37;
+const target = 10;
 
 export default function App() {
 
@@ -64,18 +71,24 @@ export default function App() {
     setTopLeftNumberButton(null)
     setTopRightNumberButton(null)
     setTopOpButton(null)
+    }
 
-    
+    const undo = () => {
+      console.log('UNDOING')
+      const newBottomButtons = buttons.filter((button) => (button.id !== biggestID));
+      setBottomNumberButtons(newBottomButtons)
     }
 
   const [winReached, setWinReached] = React.useState(false)
-  const [biggestID, setBiggestID] = React.useState(5);
+  const [biggestID, setBiggestID] = React.useState(buttons.length);
   const [bottomNumberButtons, setBottomNumberButtons] = React.useState(buttons);
   const [topLeftNumberButton, setTopLeftNumberButton] = React.useState();
   const [topRightNumberButton, setTopRightNumberButton] = React.useState();
   
   const [bottomOpButtons, setBottomOpButton] = React.useState(operations);
   const [topOpButton, setTopOpButton] = React.useState();
+
+  const [lastBottomNumberButtons, setLastBottomNumberButtons] = React.useState([]);
 
   const handleBottomNumberClick = React.useCallback((buttonID) => {
       if ((topLeftNumberButton) && (topRightNumberButton)) {
@@ -122,8 +135,11 @@ export default function App() {
 
   return (
     <div className="App">
-      <div>
-        {target}
+      <div className='target'>
+          Try to reach: {target}
+      </div>
+      <div className='undo-button-container'>
+        <UndoButton onClick={() => undo()}/>
       </div>
       {!winReached ? <header className="App-header">
          <ChosenButtonArray numberButtons={[topLeftNumberButton, topRightNumberButton]}
