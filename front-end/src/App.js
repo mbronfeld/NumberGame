@@ -30,8 +30,8 @@ const target = 10;
 
 export default function App() {
 
-  const checkWinCondition = () => {
-    const targetButton = buttons.filter((button) => button.visible)
+  const checkWinCondition = (bottomNumberButtons) => {
+    const targetButton = bottomNumberButtons.filter((button) => button.visible)
     if (targetButton.length === 1) {
       if (targetButton[0].text === target) {
         setWinReached(true)
@@ -66,7 +66,7 @@ export default function App() {
     const unusedButtons = bottomNumberButtons.filter((button) => button.id !== topLeftNumberButton.id && button.id !== topRightNumberButton.id)
     unusedButtons.push({text: result, id: topLeftNumberButton.id , visible: true})
     setBottomNumberButtons(unusedButtons)
-    checkWinCondition()
+    checkWinCondition(unusedButtons)
     setTopLeftNumberButton(null)
     setTopRightNumberButton(null)
     setTopOpButton(null)
@@ -103,14 +103,11 @@ export default function App() {
 
   const [lastState, setLastState] = React.useState([]);
 
-  const [addState, setAddState] = React.useState(false);
-
   const pushLastState = React.useCallback((bottomNumberButtons) => {
       console.log("nbnb : " , bottomNumberButtons)
       const temp = copyButtons(bottomNumberButtons, true)
       setLastState([...lastState, temp])
       console.log("new last state: " , lastState)
-      setAddState(false)
     }, [lastState]);
 
   const handleBottomNumberClick = React.useCallback((buttonID) => {
@@ -166,7 +163,7 @@ export default function App() {
       </div>
       {!winReached ? <header className="App-header">
          <ChosenButtonArray numberButtons={[topLeftNumberButton, topRightNumberButton]}
-                            operatorButton={[topOpButton]} 
+                            operatorButton={[topOpButton]}
                             onNumberButtonClick={handleTopNumberClick}
                             onOperatorButtonClick={handleTopOpClick}
                             evaluate={evaluate}/>
@@ -182,3 +179,9 @@ export default function App() {
 
 //max shi is a genius
 // iquentin
+// as;dlgfjhasdlkj;fvnads ;ljfh
+
+
+
+
+//express
