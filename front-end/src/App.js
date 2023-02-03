@@ -3,7 +3,7 @@ import ButtonArray from './ButtonArray';
 import React from 'react';
 import OpButtonArray from './OpButtonsArray';
 import ChosenButtonArray from './ChosenButtonArray';
-import UndoButton from './UndoButton';
+import GameStateButtonContainer from './GameStateButtonContainer';
 
 let buttons = [
   {text: 1, id: 1, visible: true},
@@ -38,48 +38,16 @@ export default function App() {
       }
     }
   }
-
-  const evaluate = () => {
-    const op = topOpButton.id;
-    let result;
-    const a = topLeftNumberButton.text
-    const b = topRightNumberButton.text
-    if (op === "1") {
-        result =  a+b
-    }
-    else if (op === "2") {
-        result = a-b
-    }
-    else if (op === "3") {
-        result = a*b
-    }
-    else {
-        if (b === 0) {
-            return
-        }
-        result = parseFloat((a/b).toFixed(3))
-        if (result % 1 === 0) {
-          result = parseInt(result)
-        }
-    }
-    pushLastState(bottomNumberButtons)
-    const unusedButtons = bottomNumberButtons.filter((button) => button.id !== topLeftNumberButton.id && button.id !== topRightNumberButton.id)
-    unusedButtons.push({text: result, id: topLeftNumberButton.id , visible: true})
-    setBottomNumberButtons(unusedButtons)
-    checkWinCondition(unusedButtons)
-    setTopLeftNumberButton(null)
-    setTopRightNumberButton(null)
-    setTopOpButton(null)
-  }
   
-
   const undo = () => {
     console.log('UNDOING')
     const temp = copyButtons(lastState[lastState.length - 1])
     //
     setBottomNumberButtons(temp)
     setLastState(lastState.slice(0, lastState.length - 1))
-    console.log(lastState)
+    setTopLeftNumberButton(null)
+    setTopRightNumberButton(null)
+    setTopOpButton(null)
   }
 
   const copyButtons = (buttons, forceVisible=false) => {
@@ -91,6 +59,15 @@ export default function App() {
       newButtons = [...newButtons, toBeAdded]
     });
     return newButtons
+  }
+
+  const reset = () => {
+    const temp = copyButtons(lastState[0])
+    setBottomNumberButtons(temp)
+    setLastState(lastState.slice(0, 0))
+    setTopLeftNumberButton(null)
+    setTopRightNumberButton(null)
+    setTopOpButton(null)
   }
   
   const [winReached, setWinReached] = React.useState(false)
@@ -153,20 +130,51 @@ export default function App() {
     setTopOpButton(null)
   });
 
+  const evaluate = React.useEffect(() => {
+    if (topLeftNumberButton && topRightNumberButton && topOpButton) {
+      const op = topOpButton.id;
+      let result;
+      const a = topLeftNumberButton.text
+      const b = topRightNumberButton.text
+      if (op === "1") {
+          result =  a+b
+      }
+      else if (op === "2") {
+          result = a-b
+      }
+      else if (op === "3") {
+          result = a*b
+      }
+      else {
+          if (b === 0) {
+              return
+          }
+          result = parseFloat((a/b).toFixed(3))
+          if (result % 1 === 0) {
+            result = parseInt(result)
+          }
+      }
+      pushLastState(bottomNumberButtons)
+      const unusedButtons = bottomNumberButtons.filter((button) => button.id !== topLeftNumberButton.id && button.id !== topRightNumberButton.id)
+      unusedButtons.push({text: result, id: topLeftNumberButton.id , visible: true})
+      setBottomNumberButtons(unusedButtons)
+      checkWinCondition(unusedButtons)
+      setTopLeftNumberButton(null)
+      setTopRightNumberButton(null)
+      setTopOpButton(null)
+    }
+  }, [topLeftNumberButton, topRightNumberButton, topOpButton])
+
+  
+
   return (
     <div className="App">
-      <div className='target'>
-          Try to reach: {target}
-      </div>
-      <div className='undo-button-container'>
-        {lastState.length > 0 ? <UndoButton onClick={() => undo()}/> : null}
-      </div>
-      {!winReached ? <header className="App-header">
+      <GameStateButtonContainer lastState={lastState} undo={undo} reset={reset} target={target}/>
+      {!winReached ? <header className="game-board">
          <ChosenButtonArray numberButtons={[topLeftNumberButton, topRightNumberButton]}
                             operatorButton={[topOpButton]}
                             onNumberButtonClick={handleTopNumberClick}
-                            onOperatorButtonClick={handleTopOpClick}
-                            evaluate={evaluate}/>
+                            onOperatorButtonClick={handleTopOpClick}/>
          <div className="lower-button-groups">
             <ButtonArray buttons={bottomNumberButtons} onButtonClick={handleBottomNumberClick}/>
             <OpButtonArray operations={bottomOpButtons} onButtonClick={handleBottomOpClick}/>

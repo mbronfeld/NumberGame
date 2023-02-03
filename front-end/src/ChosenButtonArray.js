@@ -33,8 +33,6 @@ function ChosenButtonArray({numberButtons, operatorButton,
             <div className="right-chosen-button">
                 {rightChosenNumber}
             </div>
-            {numberButtons[0] && numberButtons[1] && operatorButton[0] ? 
-                <EqualButton onClick={() => evaluate()}/> : null}
         </div>
     );
 }

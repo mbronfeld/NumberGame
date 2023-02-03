@@ -5,9 +5,9 @@ function UndoButton(props) {
     return (
         <input 
             type='button' 
-            value="UNDO"
+            value={props.caption}
             onClick={props.onClick}
-            className="undo-button"/>
+            className="game-state-button"/>
     );
 }
 

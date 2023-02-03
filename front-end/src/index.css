@@ -21,9 +21,9 @@ code {
   cursor: pointer;
   flex-shrink: 0;
   font-family: "Inter UI","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
-  font-size: 40px;
+  font-size: 3vh;
   font-weight: 500;
-  height: 4rem;
+  /* height: 4rem; */
   padding: 0 1.6rem;
   text-align: center;
   text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
@@ -31,7 +31,7 @@ code {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  flex-grow: 1;
+  height: 20%;
 }
 
 .button-36:hover {
@@ -44,42 +44,6 @@ code {
     padding: 0 2.6rem;
   }
 }
-
-.equal-button {
-  background-color: #33ce25;
-  border-radius: 20px;
-  border-style: none;
-  box-sizing: border-box;
-  color: #FFFFFF;
-  cursor: pointer;
-  font-family: "Inter UI","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
-  font-size: 40px;
-  font-weight: 500;
-  height: 50%;
-  padding: 0 1.6rem;
-  text-align: center;
-  text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
-  transition: all .5s;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  width: 10%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.equal-button:hover {
-  box-shadow: rgba(47, 212, 50, 0.5) 0 1px 30px;
-  transition-duration: .1s;
-}
-
-@media (min-width: 768px) {
-  .equal-button {
-    padding: 0 2.6rem;
-  }
-}
-
 /* CSS */
 .button-5 {
   align-items: center;
@@ -93,7 +57,7 @@ code {
   cursor: pointer;
   display: inline-flex;
   font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 40px;
+  font-size: 7vh;
   font-weight: 600;
   justify-content: center;
   line-height: 1.25;
@@ -107,47 +71,38 @@ code {
   -webkit-user-select: none;
   touch-action: manipulation;
   vertical-align: baseline;
-  
-  /* CHANGES */
+  width: 20vh;
   flex-grow: 1;
 }
 
-/* .button-5:hover,
-.button-5:focus {
-  background-color: #26449e;
-  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-} */
-
-/* .button-5:hover {
-  transform: translateY(-1px);
+.button-5:hover {
+  box-shadow: rgba(63, 125, 205, 0.5) 0 1px 30px;
+  transition-duration: .1s;
 }
-
-.button-5:active {
-  background-color: #c85000;
-  box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
-  transform: translateY(0);
-} */
 
 .operation-button-array {
   display: flex;
   flex-direction: column;
   width: 20%;
   height: inherit;
-  gap: 20px;
+  justify-content: space-between;
 }
 
 .lower-button-groups {
   display: flex;
   width: 80%;
+  justify-content: space-between;
   gap: 20px;
   align-items: center;
+  height: 30vh;
 }
 
 .button-array-container {
   width: 80%;
-  height: 30vh;
   display: flex;
   gap: 20px;
+  height: inherit;
+  justify-content: space-evenly;  
 }
 
 .chosen-button-array-container {
@@ -190,22 +145,25 @@ code {
 .target {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  height: 10%;
-  font-size: 50px;
+  align-items: center;
+  height: 5vh;
+  font-size: 40px;
   background-color: #282c34;
   color: white;
 }
 
-.undo-button-container {
+.game-state-button-container {
   display: flex;
-  justify-content: flex-end;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
   background-color: #282c34;
   padding-right: 10%;
   padding-left: 10%;
+  height: 10vh;
 }
 
-.undo-button {
+.game-state-button {
   background-color: #33ce25;
   border-radius: 20px;
   border-style: none;
@@ -213,7 +171,7 @@ code {
   color: #FFFFFF;
   cursor: pointer;
   font-family: "Inter UI","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
-  font-size: 40px;
+  font-size: 3vh;
   font-weight: 500;
   height: 50%;
   padding: 0 1.6rem;
@@ -238,4 +196,18 @@ code {
   .undo-button {
     padding: 0 2.6rem;
   }
+}
+
+.game-board {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 150px;
+  justify-content: center;
 }
