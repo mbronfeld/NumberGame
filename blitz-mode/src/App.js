@@ -15,12 +15,27 @@ let buttons = [
   //{text: 3, id: 6, visible: true}
 ];
 
-let lastButtons = [
-  {id: "1", visible: true},
-  {id: "2", visible: true},
-  {id: "3", visible: true},
-  {id: "4", visible: true},
-]
+let list_of_buttons = [
+  [{text: 1, id: 1, visible: true},
+  {text: 2, id: 2, visible: true},
+  {text: 3, id: 3, visible: true},
+  {text: 4, id: 4, visible: true}],
+[{text: 2, id: 1, visible: true},
+  {text: 3, id: 2, visible: true},
+  {text: 4, id: 3, visible: true},
+  {text: 5, id: 4, visible: true}],
+[{text: 3, id: 1, visible: true},
+  {text: 4, id: 2, visible: true},
+  {text: 5, id: 3, visible: true},
+  {text: 6, id: 4, visible: true}],
+[{text: 4, id: 1, visible: true},
+  {text: 5, id: 2, visible: true},
+  {text: 6, id: 3, visible: true},
+  {text: 7, id: 4, visible: true}],
+[{text: 5, id: 1, visible: true},
+  {text: 6, id: 2, visible: true},
+  {text: 7, id: 3, visible: true},
+  {text: 8, id: 4, visible: true}],]
 
 const operations = [
   {text: "+", id: "1"},
@@ -37,7 +52,12 @@ export default function App() {
     const targetButton = bottomNumberButtons.filter((button) => button.visible)
     if (targetButton.length === 1) {
       if (targetButton[0].text === target) {
-        setWinReached(true)
+        //setWinReached(true)
+        const newSolved = solvedCounter + 1
+        setSolvedCounter(newSolved)
+        console.log(solvedCounter)
+        setBottomNumberButtons(copyButtons(list_of_buttons[newSolved]))
+        setLastState([])
       }
     }
   }
@@ -73,6 +93,7 @@ export default function App() {
     setTopOpButton(null)
   }
   
+  const [solvedCounter, setSolvedCounter] = React.useState(0)
   const [winReached, setWinReached] = React.useState(false)
   const [bottomNumberButtons, setBottomNumberButtons] = React.useState(buttons);
   const [topLeftNumberButton, setTopLeftNumberButton] = React.useState();
@@ -172,7 +193,7 @@ export default function App() {
 
   return (
     <div className="App">
-      <GameStateButtonContainer lastState={lastState} undo={undo} reset={reset} target={target}/>
+      <GameStateButtonContainer lastState={lastState} undo={undo} reset={reset} target={target} solved={solvedCounter}/>
       {!winReached ? <header className="game-board">
          <ChosenButtonArray numberButtons={[topLeftNumberButton, topRightNumberButton]}
                             operatorButton={[topOpButton]}

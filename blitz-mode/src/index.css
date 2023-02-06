@@ -151,17 +151,19 @@ code {
   font-size: 40px;
   background-color: #282c34;
   color: white;
+  font-weight: bold;
 }
 
 .game-state-button-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   background-color: #282c34;
   padding-right: 10%;
   padding-left: 10%;
   height: 10vh;
+  color: white
 }
 
 .game-state-button {
@@ -182,7 +184,7 @@ code {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  width: 25%;
+  width: 15%;
   display: flex;
   justify-content: center;
   align-items: center;
