@@ -7,20 +7,13 @@ import GameStateButtonContainer from './GameStateButtonContainer';
 import VictoryScreen from './VictoryScreen';
 
 let buttons = [
-  {text: 1, id: 1, visible: true},
+  {text: 9, id: 1, visible: true},
   {text: 2, id: 2, visible: true},
-  {text: 3, id: 3, visible: true},
-  {text: 4, id: 4, visible: true},
-  //{text: 2, id: 5, visible: true},
-  //{text: 3, id: 6, visible: true}
+  {text: 5, id: 3, visible: true},
+  {text: 6, id: 4, visible: true},
+  {text: 7, id: 5, visible: true},
+  {text: 1, id: 6, visible: true}
 ];
-
-let lastButtons = [
-  {id: "1", visible: true},
-  {id: "2", visible: true},
-  {id: "3", visible: true},
-  {id: "4", visible: true},
-]
 
 const operations = [
   {text: "+", id: "1"},
@@ -29,7 +22,7 @@ const operations = [
   {text: "÷", id: "4"},
 ];
 
-const target = 10;
+const target = 247;
 
 export default function App() {
 
@@ -140,7 +133,7 @@ export default function App() {
       const a = topLeftNumberButton.text
       const b = topRightNumberButton.text
       if (op === "1") {
-          result =  a+b
+          result = a+b
       }
       else if (op === "2") {
           result = a-b
@@ -188,7 +181,7 @@ export default function App() {
 }
 
 
-//max shi is a genius
+//max has a genus jesus jesus jessus jessssususususususususus sus sus sus sus sus usu susus 
 // iquentin
 // as;dlgfjhasdlkj;fvnads ;ljfh
 

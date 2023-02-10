@@ -209,11 +209,5 @@ export default function App() {
 }
 
 
-//max shi is a genius
-// iquentin
-// as;dlgfjhasdlkj;fvnads ;ljfh
-
-
-
 
 //express
