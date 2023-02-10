@@ -130,8 +130,8 @@ export default function App() {
     if (topLeftNumberButton && topRightNumberButton && topOpButton) {
       const op = topOpButton.id;
       let result;
-      const a = topLeftNumberButton.text
-      const b = topRightNumberButton.text
+      const a = parseFloat(topLeftNumberButton.text)
+      const b = parseFloat(topRightNumberButton.text)
       if (op === "1") {
           result = a+b
       }
@@ -145,10 +145,13 @@ export default function App() {
           if (b === 0) {
               return
           }
-          result = parseFloat((a/b).toFixed(3))
-          if (result % 1 === 0) {
-            result = parseInt(result)
-          }
+          result = a/b
+      }
+      if (result % 1 !== 0) {
+        result = parseFloat(result).toFixed(3);
+      }
+      else {
+        result = parseInt(result)
       }
       pushLastState(bottomNumberButtons)
       const unusedButtons = bottomNumberButtons.filter((button) => button.id !== topLeftNumberButton.id && button.id !== topRightNumberButton.id)
@@ -179,13 +182,3 @@ export default function App() {
     </div>
   );
 }
-
-
-//max has a genus jesus jesus jessus jessssususususususususus sus sus sus sus sus usu susus 
-// iquentin
-// as;dlgfjhasdlkj;fvnads ;ljfh
-
-
-
-
-//express
