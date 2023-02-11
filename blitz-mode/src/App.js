@@ -31,19 +31,34 @@ const target_list = [10, 11, 12, 13, 14];
 export default function App() {
 
   const [score, setScore] = React.useState(0);
+  const [gamePlayable, setGamePlayable] = React.useState(true);
   
   const upScore = () => {
     const newScore = score + 1;
     setScore(newScore)
   }
 
+  React.useEffect(() => {
+    setTimeout(function () {
+      setGamePlayable(false);
+      console.log("DONE")
+    }, 10000);
+  }, []);
+
   return (
     <div className="App">
-      <Timer/>
-      <GameUI list_of_buttons={list_of_buttons} target_list={target_list} changeScore={upScore} score={score}/>
-      <div className='score-box'>
-        Score: {score}
-      </div>
+      { gamePlayable ? 
+        <div className="playable-game-view">
+          <Timer/>
+          <GameUI list_of_buttons={list_of_buttons} target_list={target_list} changeScore={upScore} score={score}/>
+          <div className='score-box'>
+            Score: {score}
+          </div> 
+        </div>   
+        : 
+        <div className='victory'>
+          You scored: {score}
+        </div>}
     </div>
     
   );

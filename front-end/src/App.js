@@ -168,9 +168,9 @@ export default function App() {
 
   return (
     <div className="App">
-      <GameStateButtonContainer lastState={lastState} undo={undo} reset={reset} target={target}/>
-      {!winReached ? <header className="game-board">
-         <ChosenButtonArray numberButtons={[topLeftNumberButton, topRightNumberButton]}
+      {!winReached ? <div className="game-board">
+          <GameStateButtonContainer lastState={lastState} undo={undo} reset={reset} target={target}/>
+          <ChosenButtonArray numberButtons={[topLeftNumberButton, topRightNumberButton]}
                             operatorButton={[topOpButton]}
                             onNumberButtonClick={handleTopNumberClick}
                             onOperatorButtonClick={handleTopOpClick}/>
@@ -178,7 +178,7 @@ export default function App() {
             <ButtonArray buttons={bottomNumberButtons} onButtonClick={handleBottomNumberClick}/>
             <OpButtonArray operations={bottomOpButtons} onButtonClick={handleBottomOpClick}/>
          </div>
-      </header> : <VictoryScreen/>}
+      </div> : <VictoryScreen/>}
     </div>
   );
 }

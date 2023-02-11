@@ -95,6 +95,7 @@ code {
   gap: 20px;
   align-items: center;
   height: 30vh;
+  padding: 20px;
 }
 
 .button-array-container {
@@ -159,9 +160,8 @@ code {
   justify-content: space-around;
   align-items: center;
   background-color: #282c34;
-  padding-right: 10%;
-  padding-left: 10%;
   height: 10vh;
+  width: 100%;
 }
 
 .game-state-button {
@@ -201,16 +201,13 @@ code {
 
 .game-board {
   background-color: #282c34;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   font-size: calc(10px + 2vmin);
   color: white;
-  display: flex;
-  flex-direction: column;
-  gap: 150px;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .victory {
@@ -218,7 +215,7 @@ code {
   text-align: center;
   font-size: 100px;
   color: white;
-  height: 90vh;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -220,7 +220,7 @@ code {
   text-align: center;
   font-size: 100px;
   color: white;
-  height: 90vh;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -263,4 +263,10 @@ code {
   right: 0;
   font-size: 30px;
   font-weight: bold;
+}
+
+.playable-game-view {
+  display: flex;
+  background-color:#282c34; 
+  width: 100%;
 }

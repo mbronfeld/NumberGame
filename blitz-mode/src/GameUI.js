@@ -3,7 +3,6 @@ import React from 'react';
 import OpButtonArray from './OpButtonsArray';
 import ChosenButtonArray from './ChosenButtonArray';
 import GameStateButtonContainer from './GameStateButtonContainer';
-import VictoryScreen from './VictoryScreen';
 
 const operations = [
   {text: "+", id: "1"},
@@ -11,8 +10,6 @@ const operations = [
   {text: "×", id: "3"},
   {text: "÷", id: "4"},
 ];
-
-const target_list = [10, 11, 12, 13, 14];
 
 function GameUI({list_of_buttons, target_list, changeScore, score}) {
 
@@ -60,8 +57,6 @@ function GameUI({list_of_buttons, target_list, changeScore, score}) {
     setTopOpButton(null)
   }
   
-  const [solvedCounter, setSolvedCounter] = React.useState(0)
-  const [timerRunning, setTimerRunning] = React.useState(false)
   const [target, setTarget] = React.useState(target_list[0])
   const [bottomNumberButtons, setBottomNumberButtons] = React.useState(list_of_buttons[0]);
   const [topLeftNumberButton, setTopLeftNumberButton] = React.useState();
@@ -161,8 +156,8 @@ function GameUI({list_of_buttons, target_list, changeScore, score}) {
 
   return (
     <div className="game_ui">
-      <GameStateButtonContainer lastState={lastState} undo={undo} reset={reset} target={target} solved={solvedCounter}/>
-      {!timerRunning ? <header className="game-board">
+      <GameStateButtonContainer lastState={lastState} undo={undo} reset={reset} target={target}/>
+      <header className="game-board">
          <ChosenButtonArray numberButtons={[topLeftNumberButton, topRightNumberButton]}
                             operatorButton={[topOpButton]}
                             onNumberButtonClick={handleTopNumberClick}
@@ -171,7 +166,7 @@ function GameUI({list_of_buttons, target_list, changeScore, score}) {
             <ButtonArray buttons={bottomNumberButtons} onButtonClick={handleBottomNumberClick}/>
             <OpButtonArray operations={bottomOpButtons} onButtonClick={handleBottomOpClick}/>
          </div>
-      </header> : <VictoryScreen/>}
+      </header>
     </div>
   );
 }

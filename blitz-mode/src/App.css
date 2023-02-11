@@ -1,6 +1,7 @@
 .App {
   display: flex;
   background-color:#282c34; 
+  justify-content: center;
 }
 
 .App-logo {
