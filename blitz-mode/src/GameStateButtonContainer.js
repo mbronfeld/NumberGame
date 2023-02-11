@@ -1,6 +1,5 @@
 import React from "react";
 import GameStateButton from "./GameStateButton"
-import Timer from "./timer";
 
 function GameStateButtonContainer({lastState, undo, reset, target, solved}) { 
 
@@ -9,15 +8,11 @@ function GameStateButtonContainer({lastState, undo, reset, target, solved}) {
 
     return(
         <div className='game-state-button-container'>
-            <Timer/>
             {userResetButton}
             <div className='target'>
                 Try to reach: {target}
             </div>
             {userUndoButton}
-            <div className ='target'>
-                Solved: {solved}
-            </div>
         </div>
     )
 }

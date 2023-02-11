@@ -84,9 +84,8 @@ const Timer = () => {
     }
   
     return (
-        <div className="App">
+        <div className="timer">
             <h2>{timer}</h2>
-            {/* <button onClick={onClickReset}>Reset</button> */}
         </div>
     )
 }
