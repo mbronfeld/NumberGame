@@ -7,12 +7,12 @@ import GameStateButtonContainer from './GameStateButtonContainer';
 import VictoryScreen from './VictoryScreen';
 
 let buttons = [
-  {text: 9, id: 1, visible: true},
-  {text: 2, id: 2, visible: true},
-  {text: 5, id: 3, visible: true},
-  {text: 6, id: 4, visible: true},
-  {text: 7, id: 5, visible: true},
-  {text: 1, id: 6, visible: true}
+  {text: 4, id: 1, visible: true},
+  {text: 3, id: 2, visible: true},
+  {text: 8, id: 3, visible: true},
+  {text: 7, id: 4, visible: true},
+  {text: 6, id: 5, visible: true},
+  {text: 6, id: 6, visible: true}
 ];
 
 const operations = [
@@ -22,7 +22,7 @@ const operations = [
   {text: "÷", id: "4"},
 ];
 
-const target = 247;
+const target = 437;
 
 export default function App() {
 
