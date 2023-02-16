@@ -42,7 +42,7 @@ export default function App() {
     setTimeout(function () {
       setGamePlayable(false);
       console.log("DONE")
-    }, 10000);
+    }, 30000);
   }, []);
 
   return (
