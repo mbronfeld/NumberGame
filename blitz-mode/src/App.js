@@ -122,8 +122,8 @@ export default function App() {
       { gamePlayable ? 
         <div className="playable-game-view">
           <Timer/>
-          <GameUI list_of_buttons={list_of_buttons} target_list={target_list} changeScore={upScore} score={score} 
-            getNumbers={getNumbers} getButtons={getButtons} getTarget={getTarget} startingButtons={startingButtons} startingTarget={startingTarget}/>
+          <GameUI changeScore={upScore} score={score} getNumbers={getNumbers} getButtons={getButtons} 
+             getTarget={getTarget} startingButtons={startingButtons} startingTarget={startingTarget}/>
           <div className='score-box'>
             Score: {score}
           </div> 

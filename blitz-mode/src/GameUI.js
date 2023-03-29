@@ -11,13 +11,12 @@ const operations = [
   {text: "÷", id: "4"},
 ];
 
-function GameUI({list_of_buttons, target_list, changeScore, score, getNumbers, getButtons, getTarget, startingButtons, startingTarget}) {
+function GameUI({changeScore, score, getNumbers, getButtons, getTarget, startingButtons, startingTarget}) {
 
   const checkWinCondition = (bottomNumberButtons) => {
     const targetButton = bottomNumberButtons.filter((button) => button.visible)
     if (targetButton.length === 1) {
       if (targetButton[0].text === target) {
-        const newSolved = score + 1
         const newNumbers = getNumbers()
         const newButtons = getButtons(newNumbers)
         const newTarget = getTarget(newNumbers)
