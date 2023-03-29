@@ -11,15 +11,18 @@ const operations = [
   {text: "÷", id: "4"},
 ];
 
-function GameUI({list_of_buttons, target_list, changeScore, score}) {
+function GameUI({list_of_buttons, target_list, changeScore, score, getNumbers, getButtons, getTarget, startingButtons, startingTarget}) {
 
   const checkWinCondition = (bottomNumberButtons) => {
     const targetButton = bottomNumberButtons.filter((button) => button.visible)
     if (targetButton.length === 1) {
       if (targetButton[0].text === target) {
         const newSolved = score + 1
-        setBottomNumberButtons(copyButtons(list_of_buttons[newSolved]))
-        setTarget(target_list[newSolved])
+        const newNumbers = getNumbers()
+        const newButtons = getButtons(newNumbers)
+        const newTarget = getTarget(newNumbers)
+        setBottomNumberButtons(copyButtons(newButtons))
+        setTarget(newTarget)
         setLastState([])
         changeScore();
       }
@@ -57,8 +60,8 @@ function GameUI({list_of_buttons, target_list, changeScore, score}) {
     setTopOpButton(null)
   }
   
-  const [target, setTarget] = React.useState(target_list[0])
-  const [bottomNumberButtons, setBottomNumberButtons] = React.useState(list_of_buttons[0]);
+  const [target, setTarget] = React.useState(startingTarget)
+  const [bottomNumberButtons, setBottomNumberButtons] = React.useState(startingButtons);
   const [topLeftNumberButton, setTopLeftNumberButton] = React.useState();
   const [topRightNumberButton, setTopRightNumberButton] = React.useState();
   
